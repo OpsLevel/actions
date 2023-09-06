@@ -21,5 +21,5 @@ jobs:
         uses: actions/checkout@v3
 
       - name: CodeQL analyze with Go
-        uses: opslevel/actions/codeql-action@v1
+        uses: opslevel/actions/codeql-go@v1
 ```
