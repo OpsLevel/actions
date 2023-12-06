@@ -1,0 +1,20 @@
+name: Dependabot PR Label
+
+on:
+  workflow_call:
+    inputs:
+      pr_label:
+        type: string
+        default: 'dependencies'
+        required: false
+
+jobs:
+  dependabot-pr-with-label:
+    if: >-
+      github.actor == 'dependabot[bot]' &&
+      github.event_name == 'pull_request' &&
+      contains(github.event.pull_request.labels.*.name, inputs.pr_label)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dependabot labeled PR
+        run: echo "Dependabot labeled a PR with label ${{ inputs.pr_label }}"
