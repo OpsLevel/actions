@@ -2,7 +2,11 @@
 name: Cache Public Images
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      mysql:
+        required: true
+        type: string
 
 jobs:
   mysql:
@@ -20,7 +24,6 @@ jobs:
           password: ${{ secrets.ECR_PRIVATE_AWS_SECRET_ACCESS_KEY }}
       - name: Pull & Push
         run: |
-          TAG=8.0.34-debian
-          docker pull mysql:${TAG}
-          docker tag mysql:${TAG} ${ECR_PRIVATE_REGISTRY}/mysql:${TAG}
-          docker push ${ECR_PRIVATE_REGISTRY}/mysql:${TAG}
+          docker pull mysql:${{ inputs.mysql }} 
+          docker tag mysql:${{ inputs.mysql }}  ${ECR_PRIVATE_REGISTRY}/mysql:${{ inputs.mysql }} 
+          docker push ${ECR_PRIVATE_REGISTRY}/mysql:${{ inputs.mysql }} 
