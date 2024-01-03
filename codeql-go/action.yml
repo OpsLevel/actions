@@ -20,11 +20,15 @@ runs:
       uses: github/codeql-action/init@v3
       with:
         languages: "go"
+        source-root: ${{ inputs.go_mod_path }}
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
+      with:
+        working-directory: ${{ inputs.go_mod_path }}
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:go"
+        checkout_path: ${{ inputs.go_mod_path }}
