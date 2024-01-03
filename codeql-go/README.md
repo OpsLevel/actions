@@ -11,7 +11,11 @@ Example:
 
 ```yaml
 name: Example Workflow for CodeQL analysis with latest Go version
-on: [push, pull]
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   test:
     name: test and analyze
@@ -22,4 +26,6 @@ jobs:
 
       - name: CodeQL analyze with Go
         uses: opslevel/actions/codeql-go@main
+        with:
+          go_mod_path: src
 ```
