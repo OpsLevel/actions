@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
 
       - name: CodeQL analyze with Go
         uses: opslevel/actions/codeql-go@main
