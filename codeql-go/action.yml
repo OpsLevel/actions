@@ -2,13 +2,19 @@ name: "CodeQL with go version from go.mod"
 description: |
   CodeQL that uses the go version from the calling repository's go.mod file.
 
+inputs:
+  go_mod_path:
+    description: 'Path to go.mod used by setup-go action'
+    required: false
+    default: '.'
+
 runs:
   using: "composite"
   steps:
     - name: Install Go
       uses: actions/setup-go@v4
       with:
-        go-version-file: go.mod
+        go-version-file: ${{ inputs.go_mod_path }}/go.mod
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
