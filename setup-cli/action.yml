@@ -1,0 +1,17 @@
+name: Install OpsLevel CLI
+description: |
+  Installs the OpsLevel CLI for use in Github workflows
+
+inputs:
+  cli_version:
+    description: 'OpsLevel CLI version to install - defaults to latest release'
+    required: false
+    default: ''
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install OpsLevel cli
+      shell: bash
+      run: |
+        curl -sLS https://raw.githubusercontent.com/OpsLevel/cli/main/install.sh ${{ inputs.version }} | sudo sh
