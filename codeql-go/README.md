@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: CodeQL analyze with Go
-        uses: opslevel/actions/codeql-go@main
+        uses: opslevel/actions/codeql-go@v1
         with:
           go_mod_path: src
 ```
