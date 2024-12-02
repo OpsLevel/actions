@@ -9,14 +9,14 @@ The default configuration installs the latest version of OpsLevel CLI:
 
 ```yaml
 steps:
-- uses: opslevel/actions/setup-cli@main
+- uses: opslevel/actions/setup-cli@v1
 ```
 
 A specific version of OpsLevel CLI can be installed:
 
 ```yaml
 steps:
-- uses: opslevel/actions/setup-cli@main
+- uses: opslevel/actions/setup-cli@v1
   with:
     cli_version: "v2024.11.8"
 ```

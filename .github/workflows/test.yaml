@@ -7,6 +7,8 @@ on:
     paths:
       - '.github/workflows/test.yml'
       - '**/*'
+env:
+  CLI_VERSION: "v2024.10.28"
 
 jobs:
   test:
@@ -21,7 +23,6 @@ jobs:
       - name: setup specific version of OpsLevel CLI
         uses: ./setup-cli/
         with:
-          cli_version: "v2024.10.28"
-      # TODO: uncomment after the output is fixed
-      # - name: run opslevel version
-      #   run: opslevel version --short == "v2024.10.28"
+          cli_version: ${{ env.CLI_VERSION }}"
+      - name: run opslevel version
+        run: opslevel version --short == "${{ env.CLI_VERSION }}"
