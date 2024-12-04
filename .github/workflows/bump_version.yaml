@@ -6,6 +6,7 @@ on:
       bump_by:
         description: "The version number to bump for the git tag"
         type: choice
+        default: patch
         options:
           - major
           - minor
