@@ -26,7 +26,10 @@ jobs:
           cli_version: "${{ env.CLI_VERSION }}"
       - name: run opslevel version
         run: |
-          VERSION="${{ env.CLI_VERSION }}"
-          if [[ $(opslevel version --short | cut -d'-' -f1) != "${VERSION:1}" ]]; then
+          EXPECTED_VERSION="${{ env.CLI_VERSION }}"
+          ACTUAL_VERSION=$(opslevel version --short | cut -d'-' -f1)
+          echo "EXPECTED_VERSION: $EXPECTED_VERSION"
+          echo "ACTUAL_VERSION: $ACTUAL_VERSION"
+          if [[ $ACTUAL_VERSION != "${EXPECTED_VERSION:1}" ]]; then
             exit 1
           fi
