@@ -26,3 +26,9 @@ steps:
 The action supports the following inputs:
 
 - `cli_version` - (optional) The version of OpsLevel CLI to install. Can be the git tag of any [release](https://github.com/OpsLevel/cli/releases) - invalid versions fail back to the latest release.
+
+## Outputs
+
+The action supports the following outputs:
+
+- `cli_executable_path` - (optional) The path to where the OpsLevel CLI executable was installed.
