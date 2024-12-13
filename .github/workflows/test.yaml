@@ -20,6 +20,12 @@ jobs:
         uses: ./setup-cli/
       - name: run opslevel version
         run: opslevel version
+
+  test_specific_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: setup specific version of OpsLevel CLI
         uses: ./setup-cli/
         with:
