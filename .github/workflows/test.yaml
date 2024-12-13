@@ -23,6 +23,10 @@ jobs:
       - name: setup specific version of OpsLevel CLI
         uses: ./setup-cli/
         with:
-          cli_version: ${{ env.CLI_VERSION }}"
+          cli_version: "${{ env.CLI_VERSION }}"
       - name: run opslevel version
-        run: opslevel version --short == "${{ env.CLI_VERSION }}"
+        run: |
+          VERSION="${{ env.CLI_VERSION }}"
+          if [[ $(opslevel version --short | cut -d'-' -f1) != "${VERSION:1}" ]]; then
+            exit 1
+          fi
