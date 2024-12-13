@@ -19,7 +19,9 @@ jobs:
       - name: setup latest release of OpsLevel CLI
         uses: ./setup-cli/
       - name: run opslevel version
-        run: opslevel version
+        run: |
+          which opslevel
+          opslevel version
 
   test_specific_version:
     runs-on: ubuntu-latest
