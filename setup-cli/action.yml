@@ -14,8 +14,8 @@ runs:
     - name: Prepend to PATH
       shell: bash
       run: |
-        mkdir -p "$HOME:/.local/bin"
-        echo "$HOME:/.local/bin" >> $GITHUB_PATH
+        mkdir -p "$HOME/.local/bin"
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
     - name: Install OpsLevel cli
       shell: bash
       run: |
