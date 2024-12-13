@@ -7,11 +7,17 @@ inputs:
     description: 'OpsLevel CLI version to install - defaults to latest release'
     required: false
     default: ''
+outputs:
+  cli_executable_path:
+    description: "Path to the OpsLevel CLI executable"
+    value: "${{ steps.cli_install.outputs.cli_exec_path }}"
 
 runs:
   using: "composite"
   steps:
     - name: Install OpsLevel cli
       shell: bash
+      id: cli_install
       run: |
         curl -sLS https://raw.githubusercontent.com/OpsLevel/cli/main/install.sh ${{ inputs.version }} | sudo sh
+        echo "cli_exec_path=$(which opslevel)" >> $GITHUB_OUTPUT
