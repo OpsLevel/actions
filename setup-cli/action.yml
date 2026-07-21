@@ -19,4 +19,4 @@ runs:
     - name: Install OpsLevel cli
       shell: bash
       run: |
-        curl -sLS https://raw.githubusercontent.com/OpsLevel/cli/main/install.sh ${{ inputs.version }} | sh
+        curl -sLS https://raw.githubusercontent.com/OpsLevel/cli/main/install.sh | sh -s -- ${{ inputs.cli_version }}

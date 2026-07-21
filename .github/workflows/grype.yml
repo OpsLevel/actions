@@ -27,12 +27,13 @@ jobs:
           token: ${{ secrets.ORG_GITHUB_TOKEN }}
       - name: Scan
         id: scan
-        uses: anchore/scan-action@df395807f4554463d4455b8047cf58e37b6acaae # v6.5.0
+        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # v7.4.0
         with:
           path: "."
           only-fixed: true
           output-format: json
           fail-build: false
+          grype-version: v0.116.0
       - name: Upload results to OpsLevel
         run: |
           jq '{"matches": .matches}' "${{ steps.scan.outputs.json }}" |
